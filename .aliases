@@ -65,6 +65,9 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 
+# Network Tools
+alias ping='ping -c3'
+
 # OS X has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
 
@@ -73,6 +76,14 @@ alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# SVN
+alias svnup='svn up --ignore-externals'
+alias svnst='svn st --ignore-externals'
+alias svnresolve='svn resolve --accept=working'
+# Typical merge scenarios
+alias svnmerge='svn merge --accept=postpone --diff3-cmd=diff3'
+alias svnmerger='svn merge --accept=postpone --diff3-cmd=diff3 --reintegrate'
 
 # File size
 if stat -c '' . > /dev/null 2>&1; then
@@ -125,3 +136,6 @@ done
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
+
+# TODO.txt
+alias t='todo.sh -d ~/.todo.cfg'
