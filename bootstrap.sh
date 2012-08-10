@@ -14,4 +14,6 @@ else
 	fi
 fi
 unset doIt
-source ~/.bash_profile
+
+# lame
+echo "You should run source ~/.zshrc now."
