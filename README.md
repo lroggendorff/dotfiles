@@ -1,3 +1,9 @@
+# dotfiles for fun and not so much profit
+
+My feeble attempt to take a dotfiles project (which is awesome) intended for bash, and make it work with zsh.
+
+- - -
+
 # Mathias’s dotfiles
 
 ## Installation
