@@ -141,4 +141,4 @@ alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # TODO.txt
-alias t='todo.sh -d ~/.todo.cfg'
+alias todo='todo.sh -d ~/.todo.cfg'
