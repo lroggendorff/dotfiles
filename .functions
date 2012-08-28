@@ -143,6 +143,3 @@ function svncmd() {
     
     svn st | grep ${regex} | cut -c 9- - | sed 's:['\'' ]:\\&:g' | xargs "$@"
 }
-
-# Load RVM function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"

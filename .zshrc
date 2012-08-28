@@ -36,3 +36,5 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
