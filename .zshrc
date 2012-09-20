@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew battery git npm nyan rvm textmate z)
+plugins=(brew battery git npm nyan textmate z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,4 +37,6 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 done
 unset file
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# RBENV http://rbenv.org/
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
