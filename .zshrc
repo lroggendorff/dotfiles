@@ -25,9 +25,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew battery git npm nyan textmate z)
+plugins=(z)
 
 source $ZSH/oh-my-zsh.sh
+
+# RBENV http://rbenv.org/
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to set or extend `$PATH`.
@@ -36,7 +39,3 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
-
-# RBENV http://rbenv.org/
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
