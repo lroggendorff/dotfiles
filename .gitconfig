@@ -32,6 +32,7 @@
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	editor = mate -w
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -49,6 +50,13 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+
+[credential]
+	helper = osxkeychain
+
+[diff]
+	tool = opendiff
+
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
@@ -71,8 +79,6 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
-[diff]
-	tool = opendiff
 
 # Include sensitive config
 [include]
