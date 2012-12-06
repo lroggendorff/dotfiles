@@ -73,3 +73,7 @@
 	insteadOf = "gist:"
 [diff]
 	tool = opendiff
+
+# Include sensitive config
+[include]
+	path = ./.gituser
