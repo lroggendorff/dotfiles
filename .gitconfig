@@ -1,6 +1,6 @@
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph
+	l = log --pretty=oneline --graph
 	# View the current working tree status using the short format
 	s = status -s
 	# Diff
@@ -11,8 +11,6 @@
 	c = clone --recursive
 	# Commit all changes
 	ca = !git add -A && git commit -av
-	# Switch to a branch, creating it if necessary
-	go = checkout -B
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
@@ -31,10 +29,8 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	whitespace = space-before-tab,trailing-space
 	editor = mate -w
-	autocrlf = input
-	safecrlf = true
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -58,6 +54,9 @@
 
 [diff]
 	tool = opendiff
+
+[push]
+	default = current
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages

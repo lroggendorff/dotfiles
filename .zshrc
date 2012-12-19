@@ -35,6 +35,10 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 
+# Python
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/share/python/virtualenvwrapper.sh
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to set or extend `$PATH`.
 # * ~/.extra can be used for settings you don’t want to commit.

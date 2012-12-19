@@ -16,4 +16,4 @@ fi
 unset doIt
 
 # lame
-echo "You should run source ~/.zshrc now."
+echo "You should exit and open a new shell now."
