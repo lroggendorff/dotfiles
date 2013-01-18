@@ -1,0 +1,7 @@
+# You know, for ack
+
+# if the pattern contains no uppercase letters, assume --ignore-case
+--smart-case
+
+# Set some types
+--type-set=json=.json
