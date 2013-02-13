@@ -1,7 +1,8 @@
 # dotfiles for fun and not so much profit
 
-My feeble attempt to take a dotfiles project (which is awesome) intended for bash, and make it work with zsh.
+My feeble attempt to take a dotfiles project (which is awesome) ...and ruin it.
 
+This is still a fork of @mathias's dotfiles repo, but is slowly but surely diverging.
 - - -
 
 # Mathias’s dotfiles
