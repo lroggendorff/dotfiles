@@ -23,6 +23,12 @@
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 	# Undo a `git push`
 	undopush = push -f origin HEAD^:master
+	# Show files changed in a given commit
+	files = diff-tree --no-commit-id --name-only -r
+	# Fetch all
+	fa = fetch --all
+	# Fetch upstream
+	fu = fetch upstream
 
 [apply]
 	# Detect whitespace errors when applying a patch

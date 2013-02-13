@@ -5,3 +5,6 @@
 
 # Set some types
 --type-set=json=.json
+
+# Page this mofo
+--pager=less -rE
