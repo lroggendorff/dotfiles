@@ -171,3 +171,7 @@ function svncmd() {
 
 	svn st | grep ${regex} | cut -c 9- - | sed 's:['\'' ]:\\&:g' | xargs "$@"
 }
+
+function ff() {
+	find . -iname "*$1*$2"
+}
