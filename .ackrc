@@ -5,6 +5,10 @@
 
 # Set some types
 --type-set=json=.json
+--type-set=ignore=.gitignore
 
 # Page this mofo
 --pager=less -rE
+
+# 1 line of context around each match
+--context=1
