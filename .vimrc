@@ -7,6 +7,9 @@ filetype plugin indent on
 " Make Vim more useful (turn off vi compatibility)
 set nocompatible
 
+" Set <leader> to ,
+let mapleader = ","
+
 " prevents security exploits dealing with modelines in files
 set modelines=0
 
@@ -15,6 +18,20 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+" allow toggling between local and default mode
+function TabToggle()
+  if &expandtab
+    set shiftwidth=2
+    set softtabstop=2
+    set noexpandtab
+  else
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+  endif
+endfunction
+nmap <leader><tab> :call TabToggle()<cr>
 
 " Indentation rules
 set autoindent
@@ -54,14 +71,14 @@ nnoremap <leader><space> :noh<cr>
 set encoding=utf-8 nobomb
 
 " Don’t add empty newlines at the end of files
-set binary
+" set binary 
 set noeol
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+    set undodir=~/.vim/undo
 endif
 
 " Enable per-directory .vimrc files and disable unsafe commands in them
@@ -73,6 +90,9 @@ set number
 
 " Enable syntax highlighting
 syntax on
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=128
 
 " Highlight current line
 set cursorline
@@ -123,18 +143,6 @@ set showcmd
 nnoremap / /\v
 vnoremap / /\v
 
-" Disables arrow keys in normal mode to enforce use of hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
-
 " Remap F1 to Esc to avoid accidentally opening help docs
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -152,13 +160,21 @@ vnoremap <tab> %
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
+" Set color scheme
+if has("gui_running")
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
@@ -167,8 +183,15 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    " Enable file type detection
+    filetype on
+    " Treat .json files as .js
+    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
+
+" Flake8 biznatch
+
+let g:flake8_max_line_length=99
+let g:flake8_ignore="E501,W293,E126,E127,E128"
+autocmd BufWritePost *.py call Flake8()
+
