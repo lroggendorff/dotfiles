@@ -14,9 +14,7 @@ alias p="cd ~/Projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
-alias v="vim"
-alias m="mate ."
-alias s="subl ."
+alias m="mvim"
 alias o="open"
 alias oo="open ."
 
@@ -42,6 +40,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # Turn off auto-correction for sudo to prevent sudo: nocorrect: command not found issues
 alias sudo='nocorrect sudo'
+alias vagrant='nocorrect vagrant'
 
 # Enable aliases to be sudo’ed
 # alias sudo='sudo '
@@ -147,3 +146,9 @@ alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # TODO.txt
 alias todo='todo.sh -d ~/.todo.cfg'
+
+# Hub (http://defunkt.io/hub/)
+eval "$(hub alias -s)"
+
+# Set flag to make MacVim behave with YouCompleteMe
+alias mvim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
