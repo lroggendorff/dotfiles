@@ -37,12 +37,16 @@ nmap <leader><tab> :call TabToggle()<cr>
 set autoindent
 set smartindent
 
+set foldmethod=indent
+set foldcolumn=3
+set foldlevel=8
+
 " Show TextMate-like whitespace chars for tab and end of line
 set list
 set listchars=tab:▸\ ,eol:¬
 
 " Line-wrapping options
-set wrap
+set nowrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
@@ -96,9 +100,6 @@ set synmaxcol=128
 
 " Highlight current line
 set cursorline
-
-" Make tabs as wide as two spaces
-set tabstop=2
 
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
@@ -162,11 +163,18 @@ set scrolloff=3
 
 " Set color scheme
 if has("gui_running")
-    set background=light
+    colorscheme solarized
+    let hr = str2nr(strftime('%H'))
+    " After 7:00 PM and before 5:00 AM, use a dark background
+    " After 5:00 AM and before 7:00 PM, use a light background
+    if hr <= 5
+        set background=dark
+    elseif hr <= 21
+        set background=light
+    endif
 else
-    set background=dark
+    colorscheme default
 endif
-colorscheme solarized
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -192,6 +200,10 @@ endif
 " Flake8 biznatch
 
 let g:flake8_max_line_length=99
-let g:flake8_ignore="E501,W293,E126,E127,E128"
+let g:flake8_ignore="E501,W293,E126,E127,E128,E121,W391"
 autocmd BufWritePost *.py call Flake8()
 
+let NERDSpaceDelims=1
+
+" Save on losing focus
+au FocusLost * :wa
