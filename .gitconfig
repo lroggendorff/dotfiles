@@ -1,14 +1,14 @@
 [alias]
-  # View the SHA, description, and history graph of the latest 20 commits
+  # View the SHA, description, and history graph
   l = log --pretty=oneline --graph
+  # View SHA, description, relative date, and committer
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   # View the current working tree status using the short format
   s = status -s
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-  # Pull in remote changes for the current repository and all its submodules
-  p = !"git pull; git submodule foreach git pull origin master"
   # Clone a repository including all submodules
   c = clone --recursive
   # Commit all changes
@@ -27,10 +27,21 @@
   files = diff-tree --no-commit-id --name-status -r
   # Fetch all
   fa = fetch --all
+  # Fetch origin
+  fo = fetch origin
   # Fetch upstream
   fu = fetch upstream
   # Unstage and discard changes
   dump = "!d() { git reset HEAD $1 && git checkout -- $1; }; d"
+  # Stash all the things before checking out
+  co = "!sh -c 'git stash; git stash apply; git checkout \"$*\"'"
+  # List branches by last modified
+  latest = for-each-ref --sort=-committerdate refs/heads/ --format="%(authordate:short)%09%(objectname:short)%09%1B[0;33m%(refname:short)%1B[m%09"
+  # Pull in remote changes and do a fast-forward-only merge of the current branch
+  up = "!git remote update -p; git merge --ff-only @{u}"
+  # Search all the things
+  spelunk = "!s() { git grep $1 $(git rev-list --all); }; s"
+
 [apply]
   # Detect whitespace errors when applying a patch
   whitespace = fix
@@ -41,6 +52,7 @@
   attributesfile = ~/.gitattributes
   # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
   whitespace = space-before-tab,trailing-space
+  autocrlf = input
 
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -71,6 +83,7 @@
 [merge]
   # Include summaries of merged commits in newly created merge commit messages
   log = true
+  tool = opendiff
 
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]

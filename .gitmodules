@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/vim-surround.vim"]
+	path = .vim/bundle/vim-surround.vim
+	url = https://github.com/tpope/vim-surround.git
