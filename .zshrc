@@ -39,6 +39,13 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/share/python/virtualenvwrapper.sh
 
+# Sane nocorrect maintenance
+if [ -f ~/.zsh_nocorrect ]; then
+    while read -r COMMAND; do
+        alias $COMMAND="nocorrect $COMMAND"
+    done < ~/.zsh_nocorrect
+fi
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to set or extend `$PATH`.
 # * ~/.extra can be used for settings you don’t want to commit.
