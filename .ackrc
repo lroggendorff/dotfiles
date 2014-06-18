@@ -6,9 +6,13 @@
 # Set some types
 --type-set=json=.json
 --type-set=ignore=.gitignore
+--type-set=scss=.scss
 
 # Page this mofo
 --pager=less -rE
 
 # 1 line of context around each match
 --context=1
+
+# Ignore this crap
+--ignore-dir=node_modules
