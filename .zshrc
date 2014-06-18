@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git fabric)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,7 +37,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # Python
 export WORKON_HOME=~/.virtualenvs
-source /usr/local/share/python/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Sane nocorrect maintenance
 if [ -f ~/.zsh_nocorrect ]; then
@@ -53,3 +53,6 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
