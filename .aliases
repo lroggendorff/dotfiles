@@ -149,3 +149,10 @@ eval "$(hub alias -s)"
 
 # Set flag to make MacVim behave with YouCompleteMe
 alias mvim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
+
+# Execute locally-installed node binaries
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+# Multi-mv nonsense
+autoload -U zmv
+alias mmv='noglob zmv -W'
