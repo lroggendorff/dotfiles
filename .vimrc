@@ -162,18 +162,16 @@ vnoremap <tab> %
 set scrolloff=3
 
 " Set color scheme
-if has("gui_running")
-    colorscheme solarized
-    let hr = str2nr(strftime('%H'))
-    " After 7:00 PM and before 5:00 AM, use a dark background
-    " After 5:00 AM and before 7:00 PM, use a light background
-    if hr <= 5
-        set background=dark
-    elseif hr <= 21
-        set background=light
-    endif
+colorscheme solarized
+let hr = str2nr(strftime('%H'))
+" After 7:00 PM and before 5:00 AM, use a dark background
+" After 5:00 AM and before 7:00 PM, use a light background
+if hr <= 5
+    set background=dark
+elseif hr <= 21
+    set background=light
 else
-    colorscheme default
+    set background=dark
 endif
 
 " Strip trailing whitespace (,ss)
