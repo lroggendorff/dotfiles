@@ -148,3 +148,6 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 # Multi-mv nonsense
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+# Format dat JSON
+alias fj='pbpaste | python -m json.tool'
