@@ -164,14 +164,6 @@ function unquarantine() {
     done
 }
 
-# SVN helper to run a command on a particular set of files, based on svn status
-function svncmd() {
-    local regex="$1"
-    shift
-
-    svn st | grep ${regex} | cut -c 9- - | sed 's:['\'' ]:\\&:g' | xargs "$@"
-}
-
 function ff() {
     find . -iname "*$1*$2"
 }
