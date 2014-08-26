@@ -3,6 +3,9 @@
 My feeble attempt to take a dotfiles project (which is awesome) ...and ruin it.
 
 This is still a fork of @mathias's dotfiles repo, but is slowly but surely diverging.
+
+Hat tip to @joshmock and [his dotfiles](https://github.com/joshmock/dotfiles)
+as well.
 - - -
 
 # Mathias’s dotfiles
