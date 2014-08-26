@@ -205,3 +205,11 @@ let NERDSpaceDelims=1
 
 " Save on losing focus
 au FocusLost * :wa
+
+" Directory for custom snippets
+let g:UltiSnipsSnippetDirectories=["custom_snippets"]
+
+" Snippet insert with Cmd-J and Shift-Cmd-J
+let g:UltiSnipsExpandTrigger="<D-j>"
+let g:UltiSnipsJumpForwardTrigger = "<D-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"

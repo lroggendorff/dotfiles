@@ -22,3 +22,9 @@
 [submodule ".vim/bundle/vim-surround.vim"]
 	path = .vim/bundle/vim-surround.vim
 	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = https://github.com/sirver/ultisnips.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git

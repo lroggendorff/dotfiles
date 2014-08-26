@@ -1,0 +1,7 @@
+snippet logger
+import logging   # import the required logging module
+logger_logins = logging.getLogger('logview.usererrors')  # logger from settings.py
+logger_logins.info('------- start $1 -------')
+logger_logins.info($1)
+logger_logins.info('----- end $1 ------')
+endsnippet
