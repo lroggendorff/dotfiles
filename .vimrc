@@ -164,11 +164,9 @@ set scrolloff=3
 " Set color scheme
 colorscheme solarized
 let hr = str2nr(strftime('%H'))
-" After 7:00 PM and before 5:00 AM, use a dark background
-" After 5:00 AM and before 7:00 PM, use a light background
-if hr <= 5
-    set background=dark
-elseif hr <= 21
+" Between 6:00 AM and 7:00 PM, use a light background
+" Otherwise, use a dark background
+if hr >= 6 && hr <= 19
     set background=light
 else
     set background=dark
