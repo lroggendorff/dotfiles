@@ -75,7 +75,7 @@ nnoremap <leader><space> :noh<cr>
 set encoding=utf-8 nobomb
 
 " Don’t add empty newlines at the end of files
-" set binary 
+" set binary
 set noeol
 
 " Centralize backups, swapfiles and undo history
@@ -211,3 +211,7 @@ let g:UltiSnipsSnippetDirectories=["custom_snippets"]
 let g:UltiSnipsExpandTrigger="<D-j>"
 let g:UltiSnipsJumpForwardTrigger = "<D-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
+
+"  move text and rehighlight -- vim tip_id=224
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
