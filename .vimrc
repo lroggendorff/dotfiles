@@ -35,7 +35,7 @@ nmap <leader><tab> :call TabToggle()<cr>
 
 " Indentation rules
 set autoindent
-set smartindent
+set cindent
 
 set foldmethod=indent
 set foldcolumn=3
