@@ -151,3 +151,6 @@ alias mmv='noglob zmv -W'
 
 # Format dat JSON
 alias fj='pbpaste | python -m json.tool'
+
+# Flip the shades
+alias solar='osascript ~/etc/switch-terminal-theme-toggle.scpt'
