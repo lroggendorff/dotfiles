@@ -136,9 +136,6 @@ alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 # TODO.txt
 alias todo='todo.sh -d ~/.todo.cfg'
 
-# Hub (http://defunkt.io/hub/)
-eval "$(hub alias -s)"
-
 # Set flag to make MacVim behave with YouCompleteMe
 alias mvim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
 
