@@ -28,7 +28,7 @@
     # Undo a `git push`
     undopush = push -f origin HEAD^:master
     # Show files changed in a given commit
-    files = diff-tree --no-commit-id --name-status -r
+    files = "!f() { git diff-tree --no-commit-id --name-status -r ${1-HEAD}; }; f"
     # Fetch all
     fa = fetch --all
     # Fetch origin
