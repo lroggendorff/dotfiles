@@ -45,6 +45,8 @@
     up = "!git remote update -p; git merge --ff-only @{u}"
     # Search all the things
     spelunk = "!s() { git grep $1 $(git rev-list --all); }; s"
+    # Search dem messages
+    logg = "!s() { git log --grep=$1; }; s"
 
 [apply]
     # Detect whitespace errors when applying a patch
