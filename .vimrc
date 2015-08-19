@@ -96,7 +96,7 @@ set number
 syntax on
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=128
+set synmaxcol=156
 
 " Highlight current line
 set cursorline

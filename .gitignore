@@ -1,6 +1,9 @@
 # Compiled Python files
 *.pyc
 
+# Coverage info
+.coverage
+
 # Folder view configuration files
 .DS_Store
 Desktop.ini
@@ -15,3 +18,7 @@ Thumbs.db
 
 # rbenv
 .rbenv-version
+
+# Artifacts
+node_modules/
+xunit_results/

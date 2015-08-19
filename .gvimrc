@@ -1,4 +1,5 @@
-" Use 14pt Menlo
-set guifont=Menlo:h14
+" Use 13pt InputMono
+set guifont=InputMono:h13
+
 " Better line-height
-set linespace=8
+set linespace=6

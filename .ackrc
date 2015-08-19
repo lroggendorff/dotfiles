@@ -17,5 +17,7 @@
 # Ignore this crap
 --ignore-dir=node_modules
 --ignore-dir=.coverage
+--ignore-dir=.sass-cache
 
 --ignore-file=match:/.*\.bundle\.js/
+--ignore-file=match:/npm-debug\.log/

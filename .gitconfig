@@ -28,13 +28,15 @@
     # Undo a `git push`
     undopush = push -f origin HEAD^:master
     # Show files changed in a given commit
-    files = "!f() { git diff-tree --no-commit-id --name-status -r ${1-HEAD}; }; f"
+    files = "!f() { git diff-tree --no-commit-id --name-status -r ${1-HEAD} | cut -c 3-; }; f"
     # Fetch all
     fa = fetch --all
     # Fetch origin
     fo = fetch origin
     # Fetch upstream
     fu = fetch upstream
+    # Pull, only accepting fast-forwardable merges
+    pff = pull --ff-only
     # Unstage and discard changes
     dump = "!d() { git reset HEAD $1 && git checkout -- $1; }; d"
     # Stash all the things before checking out
