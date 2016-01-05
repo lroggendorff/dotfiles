@@ -7,6 +7,7 @@
 --type-set=json=.json
 --type-set=ignore=.gitignore
 --type-set=scss=.scss
+--type-set=svg=.svg
 
 # Page this mofo
 --pager=less -rE
@@ -19,5 +20,6 @@
 --ignore-dir=.coverage
 --ignore-dir=.sass-cache
 
---ignore-file=match:/.*\.bundle\.js/
+--ignore-file=match:/.*\.?bundle\.js/
+--ignore-file=match:/.*\.min\.js/
 --ignore-file=match:/npm-debug\.log/
