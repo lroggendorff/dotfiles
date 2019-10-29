@@ -168,9 +168,9 @@ function ff() {
     find . -iname "*$1*$2"
 }
 
-# Run nose with coverage on a particular module
+# Run nose with coverage on a particular module and test suite
 function cover() {
-    nosetests --with-coverage --cover-erase --cover-package="$1"
+    nosetests --with-coverage --cover-erase --cover-package="$1" $2
 }
 
 # The current branch name

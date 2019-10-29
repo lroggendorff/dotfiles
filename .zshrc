@@ -29,7 +29,7 @@ fpath=('/usr/local/share/zsh/site-functions' $fpath)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fabric)
+plugins=(fabric pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,9 +39,18 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 
-# Python
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+
+# PyEnv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Sane nocorrect maintenance
 if [ -f ~/.zsh_nocorrect ]; then
@@ -54,9 +63,6 @@ fi
 # * ~/.path can be used to set or extend `$PATH`.
 # * ~/.extra can be used for settings you don’t want to commit.
 for file in ~/.{path,exports,aliases,functions,extra}; do
-	[ -r "$file" ] && source "$file"
+    [ -r "$file" ] && source "$file"
 done
 unset file
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

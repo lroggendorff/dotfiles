@@ -1,4 +1,3 @@
 vagrant
-ipython
 # Turn off auto-correction for sudo to prevent sudo: nocorrect: command not found issues
 sudo

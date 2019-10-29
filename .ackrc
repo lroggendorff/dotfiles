@@ -19,7 +19,13 @@
 --ignore-dir=node_modules
 --ignore-dir=.coverage
 --ignore-dir=.sass-cache
+--ignore-dir=.nyc_output
 
 --ignore-file=match:/.*\.?bundle\.js/
 --ignore-file=match:/.*\.min\.js/
 --ignore-file=match:/npm-debug\.log/
+--ignore-file=match:/.*\.map/
+--ignore-file=match:/.*scrabble.*/
+--ignore-file=match:/.*\.svg/
+--ignore-file=match:/.coverage/
+--ignore-file=match:/package-lock\.json/

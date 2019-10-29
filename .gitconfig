@@ -29,6 +29,8 @@
     undopush = push -f origin HEAD^:master
     # Show files changed in a given commit
     files = "!f() { git diff-tree --no-commit-id --name-status -r ${1-HEAD} | cut -c 3-; }; f"
+    # Show files changed between current HEAD and master
+    branchfiles = "!f() { git diff-tree --no-commit-id --name-status -r HEAD..master | cut -c 3-; }; f"
     # Fetch all
     fa = fetch --all
     # Fetch origin
@@ -82,16 +84,12 @@
 [credential]
     helper = osxkeychain
 
-[diff]
-    tool = opendiff
-
 [push]
     default = current
 
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
-    tool = opendiff
 
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]
@@ -115,6 +113,3 @@
 # Include sensitive config
 [include]
     path = ./.gituser
-
-[hub]
-    protocol = https

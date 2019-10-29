@@ -22,3 +22,7 @@ Thumbs.db
 # Artifacts
 node_modules/
 xunit_results/
+
+# Local dev helpful stuff
+htdocs/account
+htdocs/mailing

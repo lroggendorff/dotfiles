@@ -118,6 +118,7 @@ set incsearch
 
 " Always show status line
 set laststatus=2
+set statusline+=%=%10((%l,%c)%)
 
 " Enable mouse in all modes
 set mouse=a
@@ -185,18 +186,20 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" Automatic commands
-if has("autocmd")
-    " Enable file type detection
-    filetype on
-    " Treat .json files as .js
-    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-endif
+" Enable file type detection
+filetype on
+
+" Treat .json files as .js
+autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+
+" Set proper indentation for .json and .yml
+autocmd FileType json setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml set shiftwidth=2 softtabstop=2
 
 " Flake8 biznatch
 
 let g:flake8_max_line_length=99
-let g:flake8_ignore="E501,W293,E126,E127,E128,E121,W391"
+let g:flake8_ignore="E501,W293,E126,E127,E128,E121,W391,W504"
 autocmd BufWritePost *.py call Flake8()
 
 let NERDSpaceDelims=1
@@ -221,10 +224,15 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,W293,E126,E127,E128,E121,W391,W504'
+
+let g:syntastic_javascript_checkers = ['eslint', 'jslint']
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
 
 " Turn off JSHint autocheck
 let b:jshint_disabled = 1
