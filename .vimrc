@@ -198,8 +198,8 @@ autocmd FileType yaml set shiftwidth=2 softtabstop=2
 
 " Flake8 biznatch
 
-let g:flake8_max_line_length=99
-let g:flake8_ignore="E501,W293,E126,E127,E128,E121,W391,W504"
+let g:flake8_max_line_length=120
+let g:flake8_ignore="E501,W504"
 autocmd BufWritePost *.py call Flake8()
 
 let NERDSpaceDelims=1
@@ -225,7 +225,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,W293,E126,E127,E128,E121,W391,W504'
+let g:syntastic_python_flake8_args='--ignore=E501,W504'
 
 let g:syntastic_javascript_checkers = ['eslint', 'jslint']
 let g:syntastic_always_populate_loc_list = 0
