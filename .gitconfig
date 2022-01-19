@@ -25,12 +25,10 @@
     credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
     # Interactive rebase with the given number of latest commits
     reb = "!r() { git rebase -i HEAD~$1; }; r"
-    # Undo a `git push`
-    undopush = push -f origin HEAD^:master
     # Show files changed in a given commit
     files = "!f() { git diff-tree --no-commit-id --name-status -r ${1-HEAD} | cut -c 3-; }; f"
-    # Show files changed between current HEAD and master
-    branchfiles = "!f() { git diff-tree --no-commit-id --name-status -r HEAD..master | cut -c 3-; }; f"
+    # Show files changed between current HEAD and main
+    branchfiles = "!f() { git diff-tree --no-commit-id --name-status -r HEAD..origin/main | cut -c 3-; }; f"
     # Fetch all
     fa = fetch --all
     # Fetch origin
@@ -51,6 +49,8 @@
     spelunk = "!s() { git grep $1 $(git rev-list --all); }; s"
     # Search dem messages
     logg = "!s() { git log --grep=$1; }; s"
+    # Start fresh
+    starty = "!f() { git checkout main && git pull --rebase origin main && git remote prune origin && git localbranches | xargs git branch -d; }; f"
 
 [apply]
     # Detect whitespace errors when applying a patch
@@ -90,11 +90,12 @@
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
+    tool = meld
 
-# Use `origin` as the default remote on the `master` branch in all cases
-[branch "master"]
+# Use `origin` as the default remote on the `main` branch in all cases
+[branch "main"]
     remote = origin
-    merge = refs/heads/master
+    merge = refs/heads/main
 
 # URL shorthands
 [url "git@github.com:"]
@@ -113,3 +114,5 @@
 # Include sensitive config
 [include]
     path = ./.gituser
+[init]
+	defaultBranch = main

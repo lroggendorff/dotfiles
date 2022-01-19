@@ -1,3 +1,10 @@
+" To disable a plugin, add it's bundle name to the following list
+let g:pathogen_disabled = []
+
+if !has('gui_running')
+    call add(g:pathogen_disabled, 'ultisnips')
+endif
+
 " Pathogen settings to auto-load new plugins (http://www.vim.org/scripts/script.php?script_id=2332)
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -47,9 +54,9 @@ set listchars=tab:▸\ ,eol:¬
 
 " Line-wrapping options
 set nowrap
-set textwidth=79
+set textwidth=119
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=120
 
 " Enhance command-line completion
 set wildmenu
@@ -192,15 +199,13 @@ filetype on
 " Treat .json files as .js
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 
-" Set proper indentation for .json and .yml
+" Set proper indentation for .json, .yml, and .gql
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml set shiftwidth=2 softtabstop=2
+autocmd FileType graphql set shiftwidth=2 softtabstop=2
 
-" Flake8 biznatch
-
-let g:flake8_max_line_length=120
-let g:flake8_ignore="E501,W503"
-autocmd BufWritePost *.py call Flake8()
+" Edit crontab in-place
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 let NERDSpaceDelims=1
 
@@ -225,10 +230,16 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,W503'
+if filereadable('.flake8')
+    let g:syntastic_python_flake8_args = '--config .flake8'
+else
+    let g:syntastic_python_flake8_args = '--config ~/.flake8'
+endif
+let g:syntastic_python_flake8_exe = "$PYENV_ROOT/versions/3.8.1/bin/python -m flake8"
 
-let g:syntastic_javascript_checkers = ['eslint', 'jslint']
-let g:syntastic_javascript_eslint_exec = '$(npm bin)/eslint'
+let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_javascript_eslint_exe = "$(npm bin -g)/eslint -c ~/.eslintrc"
+
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1

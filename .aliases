@@ -7,10 +7,6 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -21,6 +17,9 @@ alias v="vagrant"
 alias ggpush='git push origin $(current_branch)'
 alias ggpur='git pull --rebase origin $(current_branch)'
 alias pippin='pip install -r requirements.txt && if [ -f "development.txt" ]; then pip install -r development.txt; fi'
+alias delpyc="find . -name '*.pyc' -exec rm {} \; && find . -name '__pycache__' -exec rm -r {} \;"
+alias duh="du -hd0"
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -142,12 +141,12 @@ alias todo='todo.sh -d ~/.todo.cfg'
 # Set flag to make MacVim behave with YouCompleteMe
 alias mvim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
 
-# Execute locally-installed node binaries
-alias npm-exec='PATH=$(npm bin):$PATH'
-
 # Multi-mv nonsense
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
 # Format dat JSON
 alias fj='pbpaste | python -m json.tool'
+
+# Ignore patterns for tree
+alias tree="tree -I 'node_modules|__pycache__'"

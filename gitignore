@@ -1,6 +1,9 @@
 # Compiled Python files
 *.pyc
 
+.pytest_cache
+.idea
+
 # Coverage info
 .coverage
 

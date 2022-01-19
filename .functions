@@ -56,9 +56,7 @@ function dataurl() {
 function server() {
     local port="${1:-8000}"
     sleep 3 && open "http://localhost:${port}/" &
-    # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-    # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-    python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+    python -m http.server "$port"
 }
 
 # Start a PHP server from a directory, optionally specifying the port
@@ -186,4 +184,14 @@ function current_branch() {
     ref=$(git rev-parse --short HEAD 2> /dev/null) || return
   fi
   echo ${ref#refs/heads/}
+}
+
+function giffit() {
+    ffmpeg -i $1 \
+        -filter_complex "[0:v] fps=12,scale=800:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" \
+        -f gif - \
+        | gifsicle \
+            --optimize=2 \
+            --delay=5 \
+            > $2
 }

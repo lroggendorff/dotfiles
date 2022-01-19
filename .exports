@@ -22,3 +22,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
+
+# Homebrew's openssl flags for compilers
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
