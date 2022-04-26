@@ -22,5 +22,13 @@ Don't forget [`brew`](https://brew.sh/), and then:
 brew install hub
 brew install macvim
 brew install pyenv
+brew install tree
 brew install z
 ```
+
+Pull down those Vim plug-ins:
+
+```
+git submodule update --init --recursive
+```
+(in the `dotfiles` directory)
