@@ -1,0 +1,52 @@
+[flake8]
+inline-quotes = "
+max-complexity = 10
+max-line-length = 120
+application-import-names=app,config,test
+import-order-style=pycharm
+ignore =
+    # Line break occurred before a binary operator
+    W503,
+    # error suffix in exception names
+    N818,
+exclude =
+    # Directories to be ignored
+    .github,
+    .git,
+    .idea,
+    .nyc_output,
+    .sass-cache,
+    __pycache__,
+    .pytest_cache,
+    coverage,
+    docs,
+    env,
+    node_modules,
+    packer,
+    resources,
+    xunit_results,
+    tray,
+    # File types to be ignored
+    *.css,
+    *.html,
+    *.in,
+    *.ini,
+    *.js,
+    *.json,
+    *.md,
+    *.pyc,
+    *.rdb,
+    *.sh,
+    *.sql,
+    *.txt,
+    *.xml,
+    *.yml,
+    *.zip,
+    # Files to ignore
+    .babelrc,
+    .eslintrc
+    .flake8,
+    .gitignore,
+    .nvmrc,
+    .stylelintrc,
+    Dockerfile,
