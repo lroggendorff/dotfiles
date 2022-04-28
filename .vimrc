@@ -235,7 +235,7 @@ if filereadable('.flake8')
 else
     let g:syntastic_python_flake8_args = '--config ~/.flake8'
 endif
-let g:syntastic_python_flake8_exe = "$PYENV_ROOT/versions/3.8.1/bin/python -m flake8"
+let g:syntastic_python_flake8_exe = "$(pyenv prefix)/bin/python -m flake8"
 
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_javascript_eslint_exe = "$(npm bin -g)/eslint -c ~/.eslintrc"
@@ -245,6 +245,3 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
-
-" Turn off JSHint autocheck
-let b:jshint_disabled = 1
