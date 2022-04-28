@@ -8,29 +8,16 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
 # Hub (http://defunkt.io/hub/)
 eval "$(hub alias -s)"
-fpath=('/usr/local/share/zsh/site-functions' $fpath)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fabric pyenv)
+plugins=(pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,9 +26,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # z
 . `brew --prefix`/etc/profile.d/z.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -65,6 +49,8 @@ export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to set or extend `$PATH`.
@@ -73,6 +59,3 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
