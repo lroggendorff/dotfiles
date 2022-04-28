@@ -59,6 +59,13 @@ if [ -f ~/.zsh_nocorrect ]; then
     done < ~/.zsh_nocorrect
 fi
 
+# Postgres tools and things
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to set or extend `$PATH`.
 # * ~/.extra can be used for settings you don’t want to commit.

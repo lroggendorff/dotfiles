@@ -115,4 +115,4 @@
 [include]
     path = ./.gituser
 [init]
-	defaultBranch = main
+    defaultBranch = main

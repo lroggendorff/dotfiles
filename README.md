@@ -19,8 +19,11 @@ And [`powerlevel10k`](https://github.com/romkatv/powerlevel10k#getting-started).
 Don't forget [`brew`](https://brew.sh/), and then:
 
 ```
+brew install ack
 brew install hub
+brew install libpq
 brew install macvim
+brew install node
 brew install pyenv
 brew install tree
 brew install z
@@ -32,3 +35,12 @@ Pull down those Vim plug-ins:
 git submodule update --init --recursive
 ```
 (in the `dotfiles` directory)
+
+
+Gotta fix up `coc.nvim`:
+
+```
+cd ~/.vim/bundle/coc.nvim
+npm i
+npm run prepare
+```
