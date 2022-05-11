@@ -169,15 +169,18 @@ vnoremap <tab> %
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
-" Set color scheme
-colorscheme solarized
-let hr = str2nr(strftime('%H'))
-" Between 6:00 AM and 7:00 PM, use a light background
-" Otherwise, use a dark background
-if hr >= 6 && hr <= 19
-    set background=light
-else
-    set background=dark
+
+if has('gui_running')
+    " Set color scheme
+    colorscheme solarized
+    let hr = str2nr(strftime('%H'))
+    " Between 6:00 AM and 7:00 PM, use a light background
+    " Otherwise, use a dark background
+    if hr >= 6 && hr <= 19
+        set background=light
+    else
+        set background=dark
+    endif
 endif
 
 " Strip trailing whitespace (,ss)
