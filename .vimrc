@@ -193,10 +193,15 @@ filetype on
 " Treat .json files as .js
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 
-" Set proper indentation for .json, .yml, and .gql
+" Treat Jenkinsfile files as Groovy
+autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy syntax=groovy
+autocmd BufNewFile,BufRead ./Jenkinsfiles/* setfiletype groovy syntax=groovy
+
+" Set proper indentation for .json, .yml, .gql, and groovy
 autocmd FileType json setlocal shiftwidth=2 softtabstop=2
 autocmd FileType yaml set shiftwidth=2 softtabstop=2
 autocmd FileType graphql set shiftwidth=2 softtabstop=2
+autocmd FileType groovy set shiftwidth=2 softtabstop=2
 
 " Edit crontab in-place
 autocmd filetype crontab setlocal nobackup nowritebackup
@@ -218,24 +223,11 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-D-j>"
 vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" CoC
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
-let g:syntastic_python_checkers = ['flake8']
-if filereadable('.flake8')
-    let g:syntastic_python_flake8_args = '--config .flake8'
-else
-    let g:syntastic_python_flake8_args = '--config ~/.flake8'
-endif
-let g:syntastic_python_flake8_exe = "$(pyenv prefix)/bin/python -m flake8"
-
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_javascript_eslint_exe = "$(npm bin -g)/eslint -c ~/.eslintrc"
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
+" ALE
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\}
