@@ -50,19 +50,29 @@
     # Search dem messages
     logg = "!s() { git log --grep=$1; }; s"
     # Start fresh
-    starty = "!f() { git checkout main && git pull --rebase origin main && git remote prune origin && git localbranches | xargs git branch -d; }; f"
+    starty = "!f() { git checkout ${1-main} && git pull --rebase origin ${1-main} && git remote prune origin && git localbranches | xargs git branch -d; }; f"
 
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
 
+[branch]
+    sort = -committerdate
+
+# Use `origin` as the default remote on the `main` branch in all cases
+[branch "main"]
+    remote = origin
+    merge = refs/heads/main
+
 [core]
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
+    autocrlf = input
+    editor = mvim -f --nomru
+    excludesfile = ~/.gitignore
+    fsmonitor = true
+    untrackedCache = true
     # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
     whitespace = space-before-tab,trailing-space
-    autocrlf = input
 
 [color]
     # Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -81,21 +91,65 @@
     changed = green
     untracked = cyan
 
+[column]
+    ui = auto
+
+[commit]
+    verbose = true
+
 [credential]
     helper = osxkeychain
 
-[push]
-    default = current
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[help]
+    autocorrect = prompt
+
+# Include sensitive config
+[include]
+    path = ./.gituser
+
+[init]
+    defaultBranch = main
 
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
     tool = meld
+    conflictstyle = zdiff3
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+    keepBackup = false
 
-# Use `origin` as the default remote on the `main` branch in all cases
-[branch "main"]
-    remote = origin
-    merge = refs/heads/main
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    followTags = true
+
+[rebase]
+    updateRefs = true
+
+[rerere]
+    enabled = true
+    autoupdate = true
 
 # URL shorthands
 [url "git@github.com:"]
@@ -117,5 +171,5 @@
 [init]
     defaultBranch = main
 [user]
-	name = Lance Roggendorff
-	email = lroggendorff@gmail.com
+    name = Lance Roggendorff
+    email = lroggendorff@gmail.com
