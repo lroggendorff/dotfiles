@@ -1,5 +1,5 @@
 # Make vim the default editor
-export EDITOR='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+export EDITOR='mvim -f'
 
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768

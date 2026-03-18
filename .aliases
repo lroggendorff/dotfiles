@@ -13,12 +13,13 @@ alias j="jobs"
 alias m="mvim"
 alias o="open"
 alias oo="open ."
-alias v="vagrant"
 alias ggpush='git push origin $(current_branch)'
 alias ggpur='git pull --rebase origin $(current_branch)'
+alias gcb='git checkout -b'
 alias pippin='pip install -r requirements.txt && if [ -f "development.txt" ]; then pip install -r development.txt; fi'
 alias delpyc="find . -name '*.pyc' -exec rm {} \; && find . -name '__pycache__' -exec rm -r {} \;"
 alias duh="du -hd0"
+alias prdiff='git diff $(git merge-base $(current_branch) origin/main) $(current_branch)'
 
 
 # Detect which `ls` flavor is in use
@@ -137,9 +138,6 @@ alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # TODO.txt
 alias todo='todo.sh -d ~/.todo.cfg'
-
-# Set flag to make MacVim behave with YouCompleteMe
-alias mvim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
 
 # Multi-mv nonsense
 autoload -U zmv

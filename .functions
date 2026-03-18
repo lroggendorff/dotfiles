@@ -195,3 +195,26 @@ function giffit() {
             --delay=5 \
             > $2
 }
+
+function def_usage() {
+    cat $1 | \
+    grep '^\s*def' | \
+    cut -f 1 -d '(' | \
+    cut -w -f 2 | \
+    xargs -L1 ack
+}
+
+function function_usage() {
+    cat $1 | \
+    grep '^\s*export\s*function' | \
+    cut -f 1 -d '(' | \
+    cut -w -f 3 | \
+    xargs -L1 ack
+}
+
+function get_ec2_info() {
+    aws ec2 describe-instances \
+      --filters "Name=tag:Name,Values=*${1}*" \
+      --query 'Reservations[*].Instances[*].{id:InstanceId,ip:PrivateIpAddress,name:Tags[?Key==`Name`]|[0].Value}' \
+      --output table
+}

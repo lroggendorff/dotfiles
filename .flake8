@@ -9,6 +9,7 @@ ignore =
     W503,
     # error suffix in exception names
     N818,
+    Q000
 exclude =
     # Directories to be ignored
     .github,
