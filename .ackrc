@@ -12,7 +12,7 @@
 --type-set=yml=.yaml
 
 # Page this mofo
---pager=less -rE
+--pager=less -EFSX
 
 # 1 line of context around each match
 --context=1
